@@ -37,7 +37,8 @@ public class DistributedReentrantLock extends DistributedLock{
 	  
 	    public void lock() throws InterruptedException, KeeperException, TimeoutException {  
 	        reentrantLock.lock();//多线程竞争时，先拿到第一层锁  
-	        super.lock();  
+	        super.lock();
+
 	    }  
 	  
 	    public boolean tryLock() throws KeeperException {  
