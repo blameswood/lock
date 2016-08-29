@@ -1,0 +1,19 @@
+<configuration>
+	<property name="DEFAULT_PATTERN" value="%d %-5level [%X{ctxLogId}][%thread] %logger{5} - %msg%n" />
+	<property name="DIGEST_PATTERN" value="%d %-5level [%X{ctxLogId}][%thread] - %msg%n" />
+	<property name="SERVICE_DIGEST_PATTERN" value="%d %-5level [%X{ctxLogId}][%thread][%X{ctxSrcSys}] - %msg%n" />
+	<property name="STAT_PATTERN" value="%d - %msg%n" />
+	<property name="LEVEL" value="INFO" />
+	<property name="CHARSET" value="UTF8" />
+	
+	<!-- Appenders -->
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${DEFAULT_PATTERN}</pattern>
+			<charset>${CHARSET}</charset>
+		</encoder>
+	</appender>
+	<!-- Loggers -->
+
+</configuration>
