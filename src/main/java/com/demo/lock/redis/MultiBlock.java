@@ -5,13 +5,12 @@
 package com.demo.lock.redis;
 
 /**
- * <p>
- * TODO (用一句话描述该文件做什么)   
- *</p>
- * @author chinesejie <br/>
+ * 多节点 锁
+ *
+ * @author chinesejie
  */
 public interface MultiBlock {
 
-	void execute();
+    void execute();
 
 }

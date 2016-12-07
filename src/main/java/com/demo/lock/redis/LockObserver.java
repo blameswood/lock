@@ -10,6 +10,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.demo.lock.LockListener;
 
 import redis.clients.jedis.Jedis;
@@ -18,7 +20,8 @@ import redis.clients.util.SafeEncoder;
 
 /**
  * <p>
- * AbstractLockObserver 的扩展
+ * AbstractLockObserver 的扩展,这是一个 锁的观察者,不对跑 run函数,对各种 锁请求[lockMap] 进行tryLock操作.
+ * 无论成功还是失败,都会把相应的LockListener 移除.
  * </p>
  *
  * @author chinesejie
@@ -32,16 +35,22 @@ public class LockObserver extends AbstractLockObserver implements Runnable {
     private boolean terminated = false;
     private CountDownLatch doneSignal = new CountDownLatch(1);
 
-    // 忽略schema, 默认schema就是0. 可以用SELECT 1  切换
+    // 默认schema就是0. 一般redis有16个db:[0,15],可以用SELECT 1  切换
     public LockObserver(String schema) {
-//        client = new CacheRedisClient(schema);
+
         client = RedisUtil.getJedis();
+        if (StringUtils.isEmpty(schema)) {
+            client.select(Integer.valueOf(0));
+        } else {
+            client.select(Integer.valueOf(schema));
+        }
         SystemExitListener.addTerminateListener(new ExitHandler() {
             public void run() {
                 stoped = true;
                 try {
                     doneSignal.await();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -73,7 +82,7 @@ public class LockObserver extends AbstractLockObserver implements Runnable {
             }
             Set<String> keyset = clone.keySet();
             if (keyset.size() > 0) {
-//                ConnectionFactory.setSingleConnectionPerThread(keyset.size());
+                //                ConnectionFactory.setSingleConnectionPerThread(keyset.size());
                 for (String key : keyset) {
                     LockListener ll = clone.get(key);
                     try {
@@ -86,7 +95,7 @@ public class LockObserver extends AbstractLockObserver implements Runnable {
                         removeLockListener(key);
                     }
                 }
-//                ConnectionFactory.releaseThreadConnection();
+                //                ConnectionFactory.releaseThreadConnection();
             } else {
                 if (stoped) {
                     terminated = true;
@@ -103,6 +112,7 @@ public class LockObserver extends AbstractLockObserver implements Runnable {
                     Thread.sleep(interval * 2);
                 }
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 
@@ -123,30 +133,24 @@ public class LockObserver extends AbstractLockObserver implements Runnable {
         final long tt = System.currentTimeMillis();
         final long expire = expireInSecond * 1000;
         final Long ne = tt + expire;
-        // 事务
+
+        // 事务开始
         final Transaction transaction = client.multi();
         transaction.setnx(key, String.valueOf(ne));
         transaction.get(SafeEncoder.encode(key));
-        //        		List<Object> mm = client.multi(key, new MultiBlock() {
-        //        			@Override
-        //        			public void execute() {
-        //        				transaction.setnxObject(key, ne);
-        //         				transaction.get(SafeEncoder.encode(key));
-        //        			}
-        //        		});
         List<Object> mm = transaction.exec();
+        // 事务结束
         Long res = (Long) mm.get(0);
         if (new Long(1).equals(res)) {
             return true;
         } else {
             byte[] bb = (byte[]) mm.get(1);
-            Long ex = java.lang.Long.parseLong(new String(bb));;
+            Long ex = java.lang.Long.parseLong(new String(bb));
+            ;
             if (ex == null || tt > ex) {
-
                 String oValue = client.get(key);
                 Long old = Long.parseLong(oValue);
                 client.set(key, String.valueOf(new Long(ne + 1)));
-
                 if (old == null || (ex == null && old == null) || (ex != null && ex.equals(old))) {
                     return true;
                 }

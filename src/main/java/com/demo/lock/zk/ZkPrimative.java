@@ -10,7 +10,7 @@ import org.apache.zookeeper.ZooKeeper;
  * <p>
  * TODO (用一句话描述该文件做什么)   
  *</p>
- * @author chinesejie <br/>
+ * @author chinesejie
  */
 public class ZkPrimative {
 	protected ZooKeeper  zk;

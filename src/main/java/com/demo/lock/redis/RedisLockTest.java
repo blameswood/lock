@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Baidu, Inc. All Rights Reserved.
+ * Copyright (C) 2016 chinesejie, Inc. All Rights Reserved.
  */
 package com.demo.lock.redis;
 
@@ -10,12 +10,12 @@ import org.apache.log4j.Logger;
  *
  * @author chinesejie
  */
-public class RedisTest {
-    private static final Logger logger = Logger.getLogger(RedisTest.class);
+public class RedisLockTest {
+    private static final Logger logger = Logger.getLogger(RedisLockTest.class);
 
     public static void main(String[] args) {
-        RedisLockUtil util = RedisLockUtil.getInstance("test");
-        RedisLockUtil.LockStat stat = util.lock("key1",3); //s 秒为单位
+        RedisLockUtil util = RedisLockUtil.getInstance("0");
+        RedisLockUtil.LockStat stat = util.lock("key1", 3); // 3s,秒为单位
         if (RedisLockUtil.LockStat.SUCCESS.equals(stat)) {
             logger.info("上锁成功");
         } else if (RedisLockUtil.LockStat.NONEED.equals(stat)) {

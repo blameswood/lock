@@ -2,7 +2,7 @@ package com.demo.lock.zk2;
 
 import com.demo.lock.concurrent.ConcurrentTest;
 
-public class ZkTest {
+public class Zk2Test2 {
 	public static void main(String[] args) {
 		Runnable task1 = new Runnable() {
 			public void run() {

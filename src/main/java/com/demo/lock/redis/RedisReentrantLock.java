@@ -17,7 +17,7 @@ import com.demo.lock.LockListener;
  *  分布式锁本地代理类
  * </p>
  * 
- * @author chinesejie <br/>
+ * @author chinesejie
  */
 public class RedisReentrantLock implements Delayed {
 	private static final Logger logger = Logger.getLogger(RedisReentrantLock.class);

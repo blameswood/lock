@@ -14,6 +14,19 @@ http://rdc.gleasy.com/%E4%B8%A4%E7%A7%8D%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%
 zookeeper有三个实现:
 zk. zk2. zk3.
 
+zk 跟 redis的项目结构很像,都是提供了一个LockListener, 使用
+public static enum LockStat{
+     NONEED,
+     SUCCESS
+}
+标明 入锁结果...
+
+
+zk2更简单. 有测试用例,看看代码就懂了.
+
+
+zk3比 zk跟zk2还要强大,加入了读写锁的功能.读锁不阻塞
+
 
 
 -----
@@ -25,3 +38,4 @@ redis 只有一种实现:
 *2. 如果设置不成功，获取key的值v1（它的到期时间戮）,跟当前时间对比，看是否已经超时
 *3. 如果超时（说明拿到锁的结点已经挂掉)，v2=getset(key,时间戮+超时+1)，判断v2是否等于v1，如果相等，加锁成功，否则加锁失败，等过段时间再重试(200MS)
 */
+

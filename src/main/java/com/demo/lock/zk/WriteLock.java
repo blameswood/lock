@@ -114,9 +114,9 @@ public class WriteLock extends ZkPrimative {
 	}
 
 	public void clear() {
-//		if (zk == null || zk.isClosed()) {
-//			return;
-//		}
+		if (zk == null ) {
+			return;
+		}
 		try {
 			zk.delete(dir, -1);
 		} catch (Exception e) {
@@ -140,7 +140,7 @@ public class WriteLock extends ZkPrimative {
 			if (id == null) {
 				long sessionId = zk.getSessionId();
 				String prefix = "x-" + sessionId + "-";
-//				idName = new LockNode(id);
+ 				idName = new LockNode(id);
 				LOG.debug("idName:" + idName);
 			}
 			if (id != null) {

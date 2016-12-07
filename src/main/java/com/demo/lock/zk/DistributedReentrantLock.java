@@ -22,43 +22,42 @@ public class DistributedReentrantLock {
 	private String dir;
 	private String schema;
 
-	private final ExitListener exitListener = new ExitListener() {
-		@Override
-		public void execute() {
-			initWriteLock();
-		}
-	};
+//	private final ExitListener exitListener = new ExitListener() {
+//		@Override
+//		public void execute() {
+//			initWriteLock();
+//		}
+//	};
 
 	private synchronized void initWriteLock() {
 		logger.debug("初始化writeLock");
-//		writeLock = new WriteLock(dir, new LockListener() {
-//
-//			@Override
-//			public void lockAcquired() {
-//				synchronized (mutex) {
-//					mutex.notify();
-//				}
-//			}
-//
-//			@Override
-//			public long getExpire() {
-//				return 0;
-//			}
-//
-//			@Override
-//			public void lockError() {
-//
-//			}
-//
-//			@Override
-//			public void lockReleased() {
-//			}
-//
-//		}, schema);
+		writeLock = new WriteLock(dir, new LockListener() {
+
+			@Override
+			public void lockAcquired() {
+				synchronized (mutex) {
+					mutex.notify();
+				}
+			}
+
+			@Override
+			public long getExpire() {
+				return 0;
+			}
+
+			@Override
+			public void lockError() {
+
+			}
+
+			@Override
+			public void lockReleased() {
+			}
+
+		}, schema);
 
 //		if (writeLock != null && writeLock.zk != null) {
-//			writeLock.zk.(exitListener);
-			// writeLock.zk.addExitListener(exitListener);
+//			 writeLock.zk.addExitListener(exitListener);
 //		}
 
 		synchronized (mutex) {

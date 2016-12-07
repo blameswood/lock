@@ -5,15 +5,15 @@
 package com.demo.lock.zk;
 
 /**
- * <p>
- * TODO (用一句话描述该文件做什么)   
- *</p>
- * @author chinesejie <br/>
+ * 锁节点
+ *
+ * @author chinesejie
  */
 public class LockNode {
+    private String id;
 
-	public LockNode(String string) {
-	        // TODO Auto-generated constructor stub
-        }
+    public LockNode(String id) {
+        this.id = id;
+    }
 
 }

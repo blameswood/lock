@@ -14,7 +14,7 @@ package com.demo.lock.redis;
 public class LockNotExistsException extends Exception {
 
     /**
-     * @Fields serialVersionUID : TODO
+     * @Fields serialVersionUID
      */
     private static final long serialVersionUID = 1L;
 

@@ -6,18 +6,27 @@ package com.demo.lock.redis;
 
 /**
  * <p>
- * TODO (用一句话描述该文件做什么)   
- *</p>
- * @author chinesejie <br/>
+ * 系统退出回调类
+ * </p>
+ *
+ * @author chinesejie
  */
 public class SystemExitListener {
 
-	public static boolean isOver() {
-	        // TODO Auto-generated method stub
-	        return false;
-        }
-	public static void addTerminateListener(ExitHandler exitHandler) {
+    private static boolean over = false;
 
-	}
+    public static boolean isOver() {
+        return over;
+    }
 
+    static ExitHandler handler;
+
+    public static void addTerminateListener(ExitHandler exitHandler) {
+        handler = exitHandler;
+    }
+
+    public static void terminate() {
+        over = true;
+        new Thread(handler).start();
+    }
 }
