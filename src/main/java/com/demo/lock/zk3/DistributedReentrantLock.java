@@ -1,5 +1,5 @@
 /* 
- * Copyright 畅捷通股份有限公司  @ 2015 版权所有    
+ * Copyright chinesejie    
  *    
  */
 package com.demo.lock.zk3;
@@ -23,7 +23,7 @@ import org.apache.zookeeper.KeeperException;
 如果先释放ReentrantLock，假如这个JVM ReentrantLock竞争度比较高，一直其他JVM的锁竞争容易
 被饿死。
  *</p>
- * @author 洪光华 <br/>
+ * @author chinesejie <br/>
  */
 public class DistributedReentrantLock extends DistributedLock{
 

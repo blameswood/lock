@@ -1,5 +1,5 @@
 /*
- * Copyright 畅捷通股份有限公司 @ 2015 版权所有
+ * Copyright chinesejie
  */
 package com.demo.lock.redis;
 
@@ -17,7 +17,7 @@ import com.demo.lock.LockListener;
  *  分布式锁本地代理类
  * </p>
  * 
- * @author 洪光华 <br/>
+ * @author chinesejie <br/>
  */
 public class RedisReentrantLock implements Delayed {
 	private static final Logger logger = Logger.getLogger(RedisReentrantLock.class);

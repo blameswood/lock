@@ -1,5 +1,5 @@
 /*
- * Copyright 畅捷通股份有限公司 @ 2015 版权所有
+ * Copyright chinesejie
  */
 package com.demo.lock.zk3;
 
@@ -22,7 +22,7 @@ import org.apache.zookeeper.data.Stat;
  * TODO (用一句话描述该文件做什么)
  * </p>
  * 
- * @author 洪光华 <br/>
+ * @author chinesejie <br/>
  */
 public class DistributedLock {
 

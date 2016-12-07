@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * }}; } new ConcurrentTest(task);
  * 
- * @author xueliang
+ * @author chinesejie
  * 
  */
 public class ConcurrentTest {

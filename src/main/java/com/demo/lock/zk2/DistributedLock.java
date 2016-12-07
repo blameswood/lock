@@ -23,7 +23,7 @@ import org.apache.zookeeper.data.Stat;
  * catch (Exception e) { e.printStackTrace(); } finally { if(lock != null)
  * lock.unlock(); }
  * 
- * @author xueliang
+ * @author chinesejie
  * 
  */
 public class DistributedLock implements Lock, Watcher {

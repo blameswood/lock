@@ -1,5 +1,5 @@
 /* 
- * Copyright 畅捷通股份有限公司  @ 2015 版权所有    
+ * Copyright chinesejie    
  *    
  */
 package com.demo.lock.redis;
@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
  * <p>
  * TODO (用一句话描述该文件做什么)   
  *</p>
- * @author 洪光华 <br/>
+ * @author chinesejie <br/>
  */
 public class RedisLockUtil {
 	private static final Logger logger =  Logger.getLogger(RedisLockUtil.class);

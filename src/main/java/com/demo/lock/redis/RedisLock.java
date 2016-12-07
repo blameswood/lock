@@ -1,5 +1,5 @@
 /* 
- * Copyright 畅捷通股份有限公司  @ 2015 版权所有    
+ * Copyright chinesejie    
  *    
  */
 package com.demo.lock.redis;

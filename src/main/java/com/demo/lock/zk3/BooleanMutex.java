@@ -1,5 +1,5 @@
 /*
- * Copyright 畅捷通股份有限公司 @ 2015 版权所有
+ * Copyright chinesejie
  */
 package com.demo.lock.zk3;
 
@@ -39,7 +39,7 @@ http://agapple.iteye.com/blog/1183972
  网址:http://agapple.iteye.com/blog/966490
  * </p>
  * 
- * @author 洪光华 <br/>
+ * @author chinesejie <br/>
  */
 public class BooleanMutex {
 
