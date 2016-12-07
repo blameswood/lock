@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Baidu, Inc. All Rights Reserved.
+ * Copyright (C) 2016 chinesejie, Inc. All Rights Reserved.
  */
 package com.demo.lock.concurrent;
 

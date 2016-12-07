@@ -8,36 +8,37 @@ import com.demo.lock.LockListener;
 
 /**
  * <p>
- * TODO (用一句话描述该文件做什么)   
- *</p>
- * @author chinesejie <br/>
+ * lock 观察者接口,它是一个线程
+ * </p>
+ *
+ * @author chinesejie
  */
-public class AbstractLockObserver implements Runnable{
+public class AbstractLockObserver implements Runnable {
 
-	@Override
-        public void run() {
-	        // TODO Auto-generated method stub
-	        
-        }
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
 
-	public boolean tryLock(String key, long expire) {
-	        // TODO Auto-generated method stub
-	        return false;
-        }
+    }
 
-	public void addLockListener(String key, LockListener locker) {
-	        // TODO Auto-generated method stub
-	        
-        }
+    public boolean tryLock(String key, long expire) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public void unLock(String key) {
-	        // TODO Auto-generated method stub
-	        
-        }
+    public void addLockListener(String key, LockListener locker) {
+        // TODO Auto-generated method stub
 
-	public void removeLockListener(String key) {
-	        // TODO Auto-generated method stub
-	        
-        }
+    }
+
+    public void unLock(String key) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void removeLockListener(String key) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

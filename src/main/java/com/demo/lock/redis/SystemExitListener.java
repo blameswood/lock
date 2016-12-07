@@ -16,5 +16,8 @@ public class SystemExitListener {
 	        // TODO Auto-generated method stub
 	        return false;
         }
+	public static void addTerminateListener(ExitHandler exitHandler) {
+
+	}
 
 }

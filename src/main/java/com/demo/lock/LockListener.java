@@ -6,18 +6,23 @@ package com.demo.lock;
 
 /**
  * <p>
- * TODO (用一句话描述该文件做什么)   
- *</p>
+ * lock 监听器
+ * 1. 锁释放 要干么
+ * 2. 得到锁 要干么
+ * 3. 得到设置的过期时间
+ * 4. 错误了 要干么
+ * </p>
+ *
  * @author chinesejie <br/>
  */
 public interface LockListener {
 
-	public void lockReleased();
+    public void lockReleased();
 
-	void lockAcquired();
+    void lockAcquired();
 
-	long getExpire();
+    long getExpire();
 
-	void lockError();
+    void lockError();
 
 }
